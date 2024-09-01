@@ -8,6 +8,7 @@ pub enum ArgTypes {
 	TopMargin = isize::MIN + 1,
 	MaxVolume = isize::MIN + 2,
 	ShowPercentage = isize::MIN + 3,
+	CustomIcon = isize::MIN + 4,
 	// Other
 	None = 0,
 	CapsLock = 1,
@@ -22,6 +23,7 @@ pub enum ArgTypes {
 	BrightnessSet = 12,
 	NumLock = 10,
 	ScrollLock = 11,
+	CustomMessage = 13,
 }
 
 impl fmt::Display for ArgTypes {
@@ -44,6 +46,8 @@ impl fmt::Display for ArgTypes {
 			ArgTypes::ScrollLock => "SCROLL-LOCK",
 			ArgTypes::DeviceName => "DEVICE-NAME",
 			ArgTypes::TopMargin => "TOP-MARGIN",
+			ArgTypes::CustomMessage => "CUSTOM-MESSAGE",
+			ArgTypes::CustomIcon => "CUSTOM-ICON",
 		};
 		return write!(f, "{}", string);
 	}
@@ -70,6 +74,8 @@ impl str::FromStr for ArgTypes {
 			"DEVICE-NAME" => ArgTypes::DeviceName,
 			"TOP-MARGIN" => ArgTypes::TopMargin,
 			"SHOW-PERCENTAGE" => ArgTypes::ShowPercentage,
+			"CUSTOM-MESSAGE" => ArgTypes::CustomMessage,
+			"CUSTOM-ICON" => ArgTypes::CustomIcon,
 			other_type => return Err(other_type.to_owned()),
 		};
 		Ok(result)
